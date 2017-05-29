@@ -87,7 +87,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    children: React.PropTypes.oneOfType([
 	      React.PropTypes.array,
 	      React.PropTypes.element
-	    ]).isRequired
+	    ])
 	  },
 	  getDefaultProps:function () {
 	    return { tabActive: 1 };

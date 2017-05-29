@@ -22,7 +22,7 @@ var Tabs = React.createClass({
     children: React.PropTypes.oneOfType([
       React.PropTypes.array,
       React.PropTypes.element
-    ]).isRequired
+    ])
   },
   getDefaultProps () {
     return { tabActive: 1 };
