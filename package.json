@@ -1,7 +1,7 @@
 {
-  "name": "react-simpletabs",
+  "name": "react-simpletabs-static",
   "version": "0.7.0",
-  "description": "Just a simple tabs component built with React",
+  "description": "Fork of Pedro Nauck's Simple Tabs component. This for will keep all tabs in the DOM to preserve scroll positions on overflow containers.",
   "author": {
     "name": "Pedro Nauck",
     "email": "pedronauck@gmail.com",
@@ -25,7 +25,7 @@
     "tab"
   ],
   "scripts": {
-    "pub": "npm publish && bower register react-simpletabs git@github.com:pedronauck/react-simpletabs.git",
+    "pub": "npm publish",
     "bundle": "gulp webpack && gulp webpack --production",
     "start": "gulp",
     "test": "jest"
