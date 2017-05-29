@@ -1,6 +1,6 @@
 {
   "name": "react-simpletabs-static",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Fork of Pedro Nauck's Simple Tabs component. This for will keep all tabs in the DOM to preserve scroll positions on overflow containers.",
   "author": {
     "name": "Pedro Nauck",
