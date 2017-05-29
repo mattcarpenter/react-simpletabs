@@ -175,14 +175,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    );
 	  },
 	  _getAllPanels:function () {
+	    var key = 0;
 	    return this.props.children.reduce(function(acc, curr)  {
+	      var display = (key === (this.state.tabActive - 1)) ? 'block' : 'none';
 	      acc.push(
-	        React.createElement("article", {ref: "tab-panel", className: "tab-panel"}, 
+	        React.createElement("article", {ref: "tab-panel", className: "tab-panel", key: key++, style: { display: display}}, 
 	          curr
 	        )
 	      );
 	      return acc;
-	    }, []);
+	    }.bind(this), []);
 	  },
 	  _getSelectedPanel:function () {
 	    var index = this.state.tabActive - 1;
