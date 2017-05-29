@@ -64,7 +64,7 @@ var Tabs = React.createClass({
     return (
       <div className={className}>
         {this._getMenuItems()}
-        articles
+        {articles}
       </div>
     );
   },

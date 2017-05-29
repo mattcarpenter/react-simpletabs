@@ -129,7 +129,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return (
 	      React.createElement("div", {className: className}, 
 	        this._getMenuItems(), 
-	        "articles"
+	        articles
 	      )
 	    );
 	  },
