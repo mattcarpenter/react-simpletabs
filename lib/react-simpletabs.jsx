@@ -41,6 +41,24 @@ var Tabs = React.createClass({
     if (this.props.onMount) {
       this.props.onMount(index, $selectedPanel, $selectedMenu);
     }
+
+    // Process children
+    var key = 0;
+    var articles = this.props.children.reduce((acc, curr) => {
+      ((index) => {
+        acc.push(
+          <article ref='tab-panel' className='tab-panel' key={index} style={{ display: (index === this.props.tabActive - 1 ? 'block' : 'none') }}>
+            <div><strong>{this.props.tabActive}</strong></div>
+            {curr}
+          </article>
+        );
+      })(key++);
+      return acc;
+    }, []);
+
+    this.setState({
+      articles: articles
+    });
   },
   componentWillReceiveProps: function(newProps){
     if(newProps.tabActive && newProps.tabActive !== this.props.tabActive){
@@ -52,7 +70,7 @@ var Tabs = React.createClass({
     return (
       <div className={className}>
         {this._getMenuItems()}
-        {this._getAllPanels()}
+        {this.state.articles}
       </div>
     );
   },
@@ -111,28 +129,16 @@ var Tabs = React.createClass({
     );
   },
   _getAllPanels () {
-    if (this.state.articles.length) {
-      return this.state.articles;
-    }
-
-    // Process children
     var key = 0;
-    var articles = this.props.children.reduce((acc, curr) => {
-      ((index) => {
-        acc.push(
-          <article ref='tab-panel' className='tab-panel' key={index} style={{ display: (index === this.props.tabActive - 1 ? 'block' : 'none') }}>
-            {curr}
-          </article>
-        );
-      })(key++);
+    return this.props.children.reduce((acc, curr) => {
+      var display = (key === (this.state.tabActive - 1)) ? 'block' : 'none';
+      acc.push(
+        <article ref='tab-panel' className='tab-panel' key={key++} style={{ display: display }}>
+          {curr}
+        </article>
+      );
       return acc;
     }, []);
-
-    this.setState({
-      articles: articles
-    });
-
-    return articles;
   },
   _getSelectedPanel () {
     var index = this.state.tabActive - 1;

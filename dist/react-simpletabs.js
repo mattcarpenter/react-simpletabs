@@ -106,6 +106,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.onMount) {
 	      this.props.onMount(index, $selectedPanel, $selectedMenu);
 	    }
+
+	    // Process children
+	    var key = 0;
+	    var articles = this.props.children.reduce(function(acc, curr)  {
+	      (function(index)  {
+	        acc.push(
+	          React.createElement("article", {ref: "tab-panel", className: "tab-panel", key: index, style: { display: (index === this.props.tabActive - 1 ? 'block' : 'none')}}, 
+	            React.createElement("div", null, React.createElement("strong", null, this.props.tabActive)), 
+	            curr
+	          )
+	        );
+	      }.bind(this))(key++);
+	      return acc;
+	    }.bind(this), []);
+
+	    this.setState({
+	      articles: articles
+	    });
 	  },
 	  componentWillReceiveProps: function(newProps){
 	    if(newProps.tabActive && newProps.tabActive !== this.props.tabActive){
@@ -117,7 +135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return (
 	      React.createElement("div", {className: className}, 
 	        this._getMenuItems(), 
-	        this._getAllPanels()
+	        this.state.articles
 	      )
 	    );
 	  },
@@ -176,28 +194,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    );
 	  },
 	  _getAllPanels:function () {
-	    if (this.state.articles.length) {
-	      return this.state.articles;
-	    }
-
-	    // Process children
 	    var key = 0;
-	    var articles = this.props.children.reduce(function(acc, curr)  {
-	      (function(index)  {
-	        acc.push(
-	          React.createElement("article", {ref: "tab-panel", className: "tab-panel", key: index, style: { display: (index === this.props.tabActive - 1 ? 'block' : 'none')}}, 
-	            curr
-	          )
-	        );
-	      }.bind(this))(key++);
+	    return this.props.children.reduce(function(acc, curr)  {
+	      var display = (key === (this.state.tabActive - 1)) ? 'block' : 'none';
+	      acc.push(
+	        React.createElement("article", {ref: "tab-panel", className: "tab-panel", key: key++, style: { display: display}}, 
+	          curr
+	        )
+	      );
 	      return acc;
 	    }.bind(this), []);
-
-	    this.setState({
-	      articles: articles
-	    });
-
-	    return articles;
 	  },
 	  _getSelectedPanel:function () {
 	    var index = this.state.tabActive - 1;
