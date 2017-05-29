@@ -152,7 +152,7 @@ Tabs.Panel = React.createClass({
     children: React.PropTypes.oneOfType([
       React.PropTypes.array,
       React.PropTypes.element
-    ]).isRequired
+    ])
   },
   render () {
     return <div>{this.props.children}</div>;
