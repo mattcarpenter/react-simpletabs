@@ -94,8 +94,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  getInitialState:function () {
 	    return {
-	      tabActive: this.props.tabActive,
-	      articles: []
+	      tabActive: this.props.tabActive
 	    };
 	  },
 	  componentDidMount:function() {
@@ -106,9 +105,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.onMount) {
 	      this.props.onMount(index, $selectedPanel, $selectedMenu);
 	    }
-
-	    // Process children
-	    var key = 0;
+	  },
+	  componentWillReceiveProps: function(newProps){
+	    if(newProps.tabActive && newProps.tabActive !== this.props.tabActive){
+	      this.setState({tabActive: newProps.tabActive});
+	    }
+	  },
+	  render:function () {
+	    var className = classNames('tabs', this.props.className);
 	    var articles = this.props.children.reduce(function(acc, curr)  {
 	      (function(index)  {
 	        acc.push(
@@ -121,21 +125,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return acc;
 	    }.bind(this), []);
 
-	    this.setState({
-	      articles: articles
-	    });
-	  },
-	  componentWillReceiveProps: function(newProps){
-	    if(newProps.tabActive && newProps.tabActive !== this.props.tabActive){
-	      this.setState({tabActive: newProps.tabActive});
-	    }
-	  },
-	  render:function () {
-	    var className = classNames('tabs', this.props.className);
 	    return (
 	      React.createElement("div", {className: className}, 
 	        this._getMenuItems(), 
-	        this.state.articles
+	        "articles"
 	      )
 	    );
 	  },
