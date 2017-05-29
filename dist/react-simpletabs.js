@@ -176,7 +176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _getAllPanels:function () {
 	    return this.props.children.reduce(function(acc, curr)  {
-	      acc = acc.push(
+	      acc.push(
 	        React.createElement("article", {ref: "tab-panel", className: "tab-panel"}, 
 	          curr
 	        )

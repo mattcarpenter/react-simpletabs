@@ -111,7 +111,7 @@ var Tabs = React.createClass({
   },
   _getAllPanels () {
     return this.props.children.reduce((acc, curr) => {
-      acc = acc.push(
+      acc.push(
         <article ref='tab-panel' className='tab-panel'>
           {curr}
         </article>
