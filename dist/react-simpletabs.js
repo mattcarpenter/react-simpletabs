@@ -1,6 +1,6 @@
 /*!
  * 
- *  React Simpletabs - Just a simple tabs component built with React
+ *  React Simpletabs - Fork of Pedro Nauck's Simple Tabs component. This for will keep all tabs in the DOM to preserve scroll positions on overflow containers.
  *  @version v0.7.0
  *  @link https://github.com/mattcarpenter/react-simpletabs
  *  @license MIT
@@ -217,7 +217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    children: React.PropTypes.oneOfType([
 	      React.PropTypes.array,
 	      React.PropTypes.element
-	    ]).isRequired
+	    ])
 	  },
 	  render:function () {
 	    return React.createElement("div", null, this.props.children);
