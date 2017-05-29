@@ -51,7 +51,7 @@ var Tabs = React.createClass({
     return (
       <div className={className}>
         {this._getMenuItems()}
-        {this._getSelectedPanel()}
+        {this._getAllPanels()}
       </div>
     );
   },
@@ -108,6 +108,16 @@ var Tabs = React.createClass({
         <ul className='tabs-menu'>{$menuItems}</ul>
       </nav>
     );
+  },
+  _getAllPanels () {
+    return this.props.children.reduce((acc, curr) => {
+      acc = acc.push(
+        <article ref='tab-panel' className='tab-panel'>
+          {curr}
+        </article>
+      );
+      return acc;
+    }, []);
   },
   _getSelectedPanel () {
     var index = this.state.tabActive - 1;

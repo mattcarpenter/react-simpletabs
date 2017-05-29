@@ -5,17 +5,17 @@
   "author": {
     "name": "Pedro Nauck",
     "email": "pedronauck@gmail.com",
-    "url": "https://github.com/pedronauck"
+    "url": "https://github.com/mattcarpenter"
   },
   "bugs": {
-    "url": "https://github.com/pedronauck/react-simpletabs/issues"
+    "url": "https://github.com/mattcarpenter/react-simpletabs/issues"
   },
-  "homepage": "https://github.com/pedronauck/react-simpletabs",
+  "homepage": "https://github.com/mattcarpenter/react-simpletabs",
   "license": "MIT",
   "main": "dist/react-simpletabs.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/pedronauck/react-simpletabs"
+    "url": "git://github.com/mattcarpenter/react-simpletabs"
   },
   "keywords": [
     "react",
