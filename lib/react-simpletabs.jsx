@@ -110,9 +110,11 @@ var Tabs = React.createClass({
     );
   },
   _getAllPanels () {
+    var key = 0;
     return this.props.children.reduce((acc, curr) => {
+      var display = (key === (this.state.tabActive - 1)) ? 'block' : 'none';
       acc.push(
-        <article ref='tab-panel' className='tab-panel'>
+        <article ref='tab-panel' className='tab-panel' key={key++} style={{ display: display }}>
           {curr}
         </article>
       );
