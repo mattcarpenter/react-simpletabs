@@ -48,6 +48,7 @@ var Tabs = React.createClass({
   },
   render () {
     var className = classNames('tabs', this.props.className);
+    var key = 0;
     var articles = this.props.children.reduce((acc, curr) => {
       ((index) => {
         acc.push(

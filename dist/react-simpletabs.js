@@ -113,6 +113,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  render:function () {
 	    var className = classNames('tabs', this.props.className);
+	    var key = 0;
 	    var articles = this.props.children.reduce(function(acc, curr)  {
 	      (function(index)  {
 	        acc.push(
