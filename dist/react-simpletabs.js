@@ -118,7 +118,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      (function(index)  {
 	        acc.push(
 	          React.createElement("article", {ref: "tab-panel", className: "tab-panel", key: index, style: { display: (index === this.state.tabActive - 1 ? 'block' : 'none')}}, 
-	            React.createElement("div", null, React.createElement("strong", null, this.state.tabActive)), 
 	            curr
 	          )
 	        );

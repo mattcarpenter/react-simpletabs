@@ -53,7 +53,6 @@ var Tabs = React.createClass({
       ((index) => {
         acc.push(
           <article ref='tab-panel' className='tab-panel' key={index} style={{ display: (index === this.state.tabActive - 1 ? 'block' : 'none') }}>
-            <div><strong>{this.state.tabActive}</strong></div>
             {curr}
           </article>
         );
