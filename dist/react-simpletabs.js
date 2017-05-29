@@ -117,8 +117,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var articles = this.props.children.reduce(function(acc, curr)  {
 	      (function(index)  {
 	        acc.push(
-	          React.createElement("article", {ref: "tab-panel", className: "tab-panel", key: index, style: { display: (index === this.props.tabActive - 1 ? 'block' : 'none')}}, 
-	            React.createElement("div", null, React.createElement("strong", null, this.props.tabActive)), 
+	          React.createElement("article", {ref: "tab-panel", className: "tab-panel", key: index, style: { display: (index === this.state.tabActive - 1 ? 'block' : 'none')}}, 
+	            React.createElement("div", null, React.createElement("strong", null, this.state.tabActive)), 
 	            curr
 	          )
 	        );

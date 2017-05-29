@@ -52,8 +52,8 @@ var Tabs = React.createClass({
     var articles = this.props.children.reduce((acc, curr) => {
       ((index) => {
         acc.push(
-          <article ref='tab-panel' className='tab-panel' key={index} style={{ display: (index === this.props.tabActive - 1 ? 'block' : 'none') }}>
-            <div><strong>{this.props.tabActive}</strong></div>
+          <article ref='tab-panel' className='tab-panel' key={index} style={{ display: (index === this.state.tabActive - 1 ? 'block' : 'none') }}>
+            <div><strong>{this.state.tabActive}</strong></div>
             {curr}
           </article>
         );
