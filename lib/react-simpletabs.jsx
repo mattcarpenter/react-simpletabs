@@ -29,7 +29,8 @@ var Tabs = React.createClass({
   },
   getInitialState () {
     return {
-      tabActive: this.props.tabActive
+      tabActive: this.props.tabActive,
+      articles: []
     };
   },
   componentDidMount() {
@@ -40,6 +41,23 @@ var Tabs = React.createClass({
     if (this.props.onMount) {
       this.props.onMount(index, $selectedPanel, $selectedMenu);
     }
+
+    // Process children
+    var key = 0;
+    var articles = this.props.children.reduce((acc, curr) => {
+      ((index) => {
+        acc.push(
+          <article ref='tab-panel' className='tab-panel' key={key++} style={{ display: (index === this.props.tabActive - 1 ? 'block' : 'none') }}>
+            {curr}
+          </article>
+        );
+      })(key++);
+      return acc;
+    }, []);
+
+    this.setState({
+      articles: articles
+    });
   },
   componentWillReceiveProps: function(newProps){
     if(newProps.tabActive && newProps.tabActive !== this.props.tabActive){
@@ -51,7 +69,7 @@ var Tabs = React.createClass({
     return (
       <div className={className}>
         {this._getMenuItems()}
-        {this._getAllPanels()}
+        {this.state.articles}
       </div>
     );
   },

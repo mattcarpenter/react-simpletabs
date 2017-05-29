@@ -94,7 +94,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  getInitialState:function () {
 	    return {
-	      tabActive: this.props.tabActive
+	      tabActive: this.props.tabActive,
+	      articles: []
 	    };
 	  },
 	  componentDidMount:function() {
@@ -105,6 +106,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.onMount) {
 	      this.props.onMount(index, $selectedPanel, $selectedMenu);
 	    }
+
+	    // Process children
+	    var key = 0;
+	    var articles = this.props.children.reduce(function(acc, curr)  {
+	      (function(index)  {
+	        acc.push(
+	          React.createElement("article", {ref: "tab-panel", className: "tab-panel", key: key++, style: { display: (index === this.props.tabActive - 1 ? 'block' : 'none')}}, 
+	            curr
+	          )
+	        );
+	      }.bind(this))(key++);
+	      return acc;
+	    }.bind(this), []);
+
+	    this.setState({
+	      articles: articles
+	    });
 	  },
 	  componentWillReceiveProps: function(newProps){
 	    if(newProps.tabActive && newProps.tabActive !== this.props.tabActive){
@@ -116,7 +134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return (
 	      React.createElement("div", {className: className}, 
 	        this._getMenuItems(), 
-	        this._getAllPanels()
+	        this.state.articles
 	      )
 	    );
 	  },
